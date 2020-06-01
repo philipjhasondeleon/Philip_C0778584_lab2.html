@@ -17,9 +17,59 @@
             var table = document.createElement('table');
             table.style.border = "2px solid green";
             table.id = "myTable";
-            
+            for (var x = 0; x < rows; x++) {
+                var tr = document.createElement('tr');
 
-        
+                for (var y = 0; y < columns; y++) {
+                    var td = document.createElement('td');
+                    td.innerHTML = 'row' + '[' + x + ']' + 'column' + '[' + y + ']';
+                    tr.appendChild(td);
+                }
+
+                table.appendChild(tr);
+            }
+
+            document.body.appendChild(table);
+        }
+
+        /* generate table  */
+        function generate() {
+            document.getElementById('t1').value = ''
+            document.getElementById('t2').value = ''
+        }
+
+
+        var button = document.getElementById('b1').addEventListener('click', function () {
+            var rows = document.getElementById('t1').value;
+            var columns = document.getElementById('t2').value;
+            generateTable(rows, columns);
+            generate();
+        })
+
+      
+       function addRow() {
+    var tbl = document.getElementById("myTable"), 
+        row = tbl.insertRow(tbl.rows.length),   
+         i;
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+        addCellText(row.insertCell(i), "row");
+    }
+}
+ 
+
+function addCellText(cell, text) {
+        txt = document.createTextNode(text); 
+        cell.appendChild(txt);                                       
+        }
+
+       function addColumn() {
+    var tbl = document.getElementById("myTable"), 
+        i;
+    
+    for (i = 0; i < tbl.rows.length; i++) {
+        addCellText(tbl.rows[i].insertCell(tbl.rows[i].cells.length), "col");
+    }
+} 
     </script>
 </body>
 </html>
